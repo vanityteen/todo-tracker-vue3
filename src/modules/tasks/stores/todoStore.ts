@@ -22,8 +22,6 @@ interface Todo {
 
 interface NewTodoInput {
   title: string
-  completed?: boolean
-  important?: boolean
   dueDate?: string | null
   notes?: string
   listId?: TodoListId
@@ -42,8 +40,8 @@ export const useTodoStore = defineStore('todo', () => {
     const newTodo: Todo = {
       id: Date.now(),
       title: todo.title,
-      completed: todo.completed ?? false,
-      important: todo.important ?? false,
+      completed: false,
+      important: false,
       dueDate: todo.dueDate ?? null,
       notes: todo.notes ?? '',
       listId: todo.listId ?? activeList.value,
