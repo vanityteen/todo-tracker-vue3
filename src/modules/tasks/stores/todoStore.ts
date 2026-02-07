@@ -67,7 +67,7 @@ export const useTodoStore = defineStore('todo', () => {
     }
   }
 
-  const updateTodo = (id: number, updates: Partial<Omit<Todo, 'id' | 'createdAt'>>) => {
+  const updateTodo = (id: number, updates: Partial<Todo>) => {
     const index = todos.value.findIndex(item => item.id === id)
     if (index !== -1) {
       todos.value[index] = { ...todos.value[index], ...updates }
