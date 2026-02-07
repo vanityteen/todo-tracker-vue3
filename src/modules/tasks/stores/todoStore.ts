@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { computed, ref } from 'vue'
 
 type TodoListId = 'default' | 'important' | 'planned' | string
 
@@ -29,79 +28,78 @@ interface NewTodoInput {
   listId?: TodoListId
 }
 
-export const useTodoStore = defineStore('todo', () => {
-  const todos = ref<Todo[]>([])
-  const lists = ref<TodoList[]>([
-    { id: 'default', name: 'Tasks', icon: '📝' },
-    { id: 'important', name: 'Important', icon: '⭐' },
-    { id: 'planned', name: 'Planned', icon: '📅' }
-  ])
-  const activeList = ref<TodoListId>('default')
+interface TodoState {
+  todos: Todo[]
+  lists: TodoList[]
+  activeList: TodoListId
+}
 
-  const addTodo = (todo: NewTodoInput) => {
-    const newTodo: Todo = {
-      id: Date.now(),
-      title: todo.title,
-      completed: todo.completed ?? false,
-      important: todo.important ?? false,
-      dueDate: todo.dueDate ?? null,
-      notes: todo.notes ?? '',
-      listId: todo.listId ?? activeList.value,
-      createdAt: new Date().toISOString()
+export const useTodoStore = defineStore('todo', {
+  state: (): TodoState => ({
+    todos: [],
+    lists: [
+      { id: 'default', name: 'Tasks', icon: '📝' },
+      { id: 'important', name: 'Important', icon: '⭐' },
+      { id: 'planned', name: 'Planned', icon: '📅' }
+    ],
+    activeList: 'default'
+  }),
+
+  getters: {
+    filteredTodos: (state): Todo[] => {
+      if (state.activeList === 'important') {
+        return state.todos.filter(todo => todo.important)
+      }
+      if (state.activeList === 'planned') {
+        return state.todos.filter(todo => todo.dueDate)
+      }
+      return state.todos.filter(todo => todo.listId === state.activeList)
     }
+  },
 
-    todos.value.push(newTodo)
-  }
+  actions: {
+    addTodo(todo: NewTodoInput) {
+      const newTodo: Todo = {
+        id: Date.now(),
+        title: todo.title,
+        completed: todo.completed ?? false,
+        important: todo.important ?? false,
+        dueDate: todo.dueDate ?? null,
+        notes: todo.notes ?? '',
+        listId: todo.listId ?? this.activeList,
+        createdAt: new Date().toISOString()
+      }
 
-  const toggleTodo = (id: number) => {
-    const todo = todos.value.find(item => item.id === id)
-    if (todo) {
-      todo.completed = !todo.completed
+      this.todos.push(newTodo)
+    },
+
+    toggleTodo(id: number) {
+      const todo = this.todos.find(item => item.id === id)
+      if (todo) {
+        todo.completed = !todo.completed
+      }
+    },
+
+    toggleImportant(id: number) {
+      const todo = this.todos.find(item => item.id === id)
+      if (todo) {
+        todo.important = !todo.important
+      }
+    },
+
+    updateTodo(id: number, updates: Partial<Todo>) {
+      const index = this.todos.findIndex(item => item.id === id)
+      if (index !== -1) {
+        this.todos[index] = { ...this.todos[index], ...updates }
+      }
+    },
+
+    deleteTodo(id: number) {
+      this.todos = this.todos.filter(item => item.id !== id)
+    },
+
+    setActiveList(listId: TodoListId) {
+      this.activeList = listId
     }
-  }
-
-  const toggleImportant = (id: number) => {
-    const todo = todos.value.find(item => item.id === id)
-    if (todo) {
-      todo.important = !todo.important
-    }
-  }
-
-  const updateTodo = (id: number, updates: Partial<Todo>) => {
-    const index = todos.value.findIndex(item => item.id === id)
-    if (index !== -1) {
-      todos.value[index] = { ...todos.value[index], ...updates }
-    }
-  }
-
-  const deleteTodo = (id: number) => {
-    todos.value = todos.value.filter(item => item.id !== id)
-  }
-
-  const setActiveList = (listId: TodoListId) => {
-    activeList.value = listId
-  }
-
-  const filteredTodos = computed(() => {
-    if (activeList.value === 'important') {
-      return todos.value.filter(todo => todo.important)
-    }
-    if (activeList.value === 'planned') {
-      return todos.value.filter(todo => todo.dueDate)
-    }
-    return todos.value.filter(todo => todo.listId === activeList.value)
-  })
-
-  return {
-    todos,
-    lists,
-    activeList,
-    filteredTodos,
-    addTodo,
-    toggleTodo,
-    toggleImportant,
-    updateTodo,
-    deleteTodo,
-    setActiveList
   }
 })
