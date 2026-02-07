@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
-type TodoListId = 'default' | 'important' | 'planned' | string
+type KnownTodoListId = 'default' | 'important' | 'planned'
+type TodoListId = KnownTodoListId | (string & {})
 
 interface TodoList {
   id: TodoListId
