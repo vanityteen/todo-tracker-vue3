@@ -30,7 +30,7 @@ This document captures a high-level review of the current Vue 3 app architecture
 ## Phased Refactor Plan
 
 ### Phase 1 — Architecture Alignment (1–2 days)
-- Convert `src/stores/todoStore.js` to TypeScript and align it with the same pattern used in other stores.
+- Convert the tasks/todo store under `src/modules/tasks/` to TypeScript and align it with the same pattern used in other stores.
 - Introduce a `src/plugins/chart.ts` (or `src/core/plugins/chart.ts`) to encapsulate Chart.js registration.
 - Normalize naming: align page names (`TodayView` vs `TodayPage`) and create a single convention (e.g., `*View.vue`).
 - Add a lightweight `src/core/ui` folder and migrate reusable buttons/cards from inline page usage.
