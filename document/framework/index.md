@@ -33,34 +33,34 @@ Welcome to the JustDo Vue documentation. This documentation provides comprehensi
 
 ### Development Practices
 
-6. **[Testing](./testing.md)**
+5. **[Testing](./testing.md)**
    - AAA (Arrange-Act-Assert) testing pattern
    - Vue Testing Utils and Jest setup
    - Component and unit testing strategies
 
-7. **[Error Handling](./error-handling.md)**
+6. **[Error Handling](./error-handling.md)**
    - Global error handling strategies
    - Component-level error boundaries
    - API error management
 
-8. **[Logging](./logging.md)**
+7. **[Logging](./logging.md)**
    - Centralized logging with Pinia stores
    - Log levels and formatting
    - Production logging best practices
 
 ### Utilities & Configuration
 
-9. **[Utility Functions](./utility.md)**
+8. **[Utility Functions](./utility.md)**
    - Date formatting utilities
    - Common helper functions
    - Type-safe utility patterns
 
-10. **[Middleware](./milddware.md)**
+9. **[Middleware](./milddware.md)**
    - Route middleware implementation
    - Authentication and authorization guards
    - Request/response interceptors
 
-11. **[Custom Environment](./custom-enviroment.md)**
+10. **[Custom Environment](./custom-enviroment.md)**
    - Environment variable configuration
    - Multi-environment setup
    - Build-time vs runtime configuration
