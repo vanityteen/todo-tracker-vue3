@@ -73,7 +73,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import { useTodoStore } from '../stores/todoStore'
+import { useTodoStore } from '../store/todo.store'
 import { storeToRefs } from 'pinia'
 import BaseListItem from '@/core/components/BaseListItem.vue'
 
