@@ -26,6 +26,11 @@ Welcome to the JustDo Vue documentation. This documentation provides comprehensi
    - Route organization and structure
    - Navigation guards and lazy loading
 
+5. **[Architecture Review & Refactor Plan](./refactor-plan.md)**
+   - Current architecture snapshot
+   - Refactor goals and phased plan
+   - Suggested progress metrics
+
 ### Development Practices
 
 5. **[Testing](./testing.md)**
@@ -108,4 +113,3 @@ When adding new patterns or guidelines:
 **Vue Version**: 3.x  
 **Pinia Version**: 2.x  
 **Vite Version**: 5.x
-
