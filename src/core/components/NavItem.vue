@@ -36,7 +36,7 @@
 <script setup lang="ts">
 interface Props {
   to: string
-  icon: object
+  icon: any
   label: string
   active?: boolean
   color?: string

@@ -70,16 +70,21 @@
   </BaseListItem>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {
   CheckIcon,
   StarIcon,
   CalendarIcon,
   PencilIcon,
   TrashIcon
-} from '@/components/icons'
+} from '@heroicons/vue/24/outline'
 import BaseListItem from '@/core/components/BaseListItem.vue'
 import BaseTag from '@/core/components/BaseTag.vue'
+
+interface Tag {
+  label: string
+  color: string
+}
 
 const props = defineProps({
   title: {
@@ -103,12 +108,12 @@ const props = defineProps({
     default: null
   },
   tag: {
-    type: Object,
+    type: Object as () => Tag | null,
     default: null
   }
 })
 
-const formatDate = (date) => {
+const formatDate = (date: Date) => {
   return new Date(date).toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
@@ -117,4 +122,4 @@ const formatDate = (date) => {
 }
 
 defineEmits(['toggle-complete', 'toggle-important', 'edit', 'delete'])
-</script> 
+</script>

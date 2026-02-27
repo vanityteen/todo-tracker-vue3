@@ -9,7 +9,7 @@
         @click="isNewActivityModalOpen = true"
         class="flex items-center px-4 py-2 bg-[#2564CF] text-white rounded-lg hover:bg-[#215ABB]"
       >
-        <PlusIcon class="w-5 h-5 mr-2" />
+        <PlusIcon class="w-5 h-5 sm:mr-2" />
         <span class="hidden sm:inline">New Activity</span>
       </button>
     </div>

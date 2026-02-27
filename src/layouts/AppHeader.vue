@@ -9,7 +9,7 @@
             class="todo-input"
           />
           <span class="absolute left-3 top-2.5 text-gray-400">
-            <SearchIcon class="w-5 h-5" />
+            <MagnifyingGlassIcon class="w-5 h-5" />
           </span>
         </div>
       </div>
@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { SearchIcon, SunIcon } from '@/components/icons'
+import { MagnifyingGlassIcon, SunIcon } from '@heroicons/vue/24/outline'
 
 defineProps({
   userName: {

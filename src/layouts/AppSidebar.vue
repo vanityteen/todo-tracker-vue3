@@ -93,7 +93,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue'
 import { useRoute } from 'vue-router'
 import NavItem from '@/core/components/NavItem.vue'
 import { 
@@ -128,13 +127,13 @@ const isActive = (path: string): boolean => {
 const topNavItems = [
   {
     path: '/',
-    label: 'Dashboard',
-    icon: HomeIcon
-  },
-  {
-    path: '/today',
     label: 'Today',
     icon: CalendarDaysIcon
+  },
+  {
+    path: '/dashboard',
+    label: 'Dashboard',
+    icon: HomeIcon
   },
   {
     path: '/upcoming',

@@ -3,7 +3,7 @@
     <template #content>
       <div class="relative aspect-square rounded-2xl overflow-hidden bg-gray-100 mb-2">
         <img 
-          :src="`/images/${image}`" 
+          :src="`${image}`" 
           :alt="title"
           class="w-full h-full object-cover transition-transform group-hover:scale-105"
         />
@@ -15,8 +15,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import type { Habit } from '../types'
 import BaseCard from '@/core/components/BaseCard.vue'
 
 const props = defineProps<{

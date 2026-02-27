@@ -10,7 +10,7 @@
         @click="isNewActivityModalOpen = true"
         class="flex items-center px-4 py-2 bg-[#2564CF] text-white rounded-lg hover:bg-[#215ABB]"
       >
-        <PlusIcon class="w-5 h-5 mr-2" />
+        <PlusIcon class="w-5 h-5 sm:mr-2" />
         <span class="hidden sm:inline">New Activity</span>
       </button>
     </div>
@@ -226,6 +226,7 @@ import ActivityCompletionChart from '@/core/components/charts/ActivityCompletion
 import ActivityCategoryChart from '@/core/components/charts/ActivityCategoryChart.vue'
 import ActivityHoursChart from '@/core/components/charts/ActivityHoursChart.vue'
 import ProductivityChart from '@/core/components/charts/ProductivityChart.vue'
+import DashboardLayout from '@/layouts/DashboardLayout.vue'
 
 const activityStore = useActivityStore()
 const isNewActivityModalOpen = ref(false)

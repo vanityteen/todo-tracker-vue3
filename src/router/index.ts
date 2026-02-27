@@ -7,6 +7,8 @@ import AuthLayout from '@/layouts/AuthLayout.vue'
 import DashboardLayout from '@/layouts/DashboardLayout.vue'
 import ActivityListView from '@/pages/ActivityListView.vue'
 import DashboardView from '@/pages/DashboardView.vue'
+import TodayPage from '@/pages/TodayPage.vue'
+import MainLayout from '@/layouts/MainLayout.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -15,18 +17,18 @@ const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        name: 'dashboard',
-        component: DashboardView
-      },
-      {
-        path: 'today',
         name: 'today',
         component: TodayView
       },
       {
+        path: 'dashboard',
+        name: 'dashboard',
+        component: DashboardView,
+      },
+      {
         path: 'upcoming',
         name: 'upcoming',
-        component: ActivityListView
+        component: TodayPage,
       },
       {
         path: 'activities',
@@ -63,7 +65,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: AuthLayout,
-    meta: { requiresGuest: true },
+    // meta: { requiresGuest: true },
     children: [
       {
         path: 'login',
